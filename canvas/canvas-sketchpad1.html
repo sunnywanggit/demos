@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="canvas-sketchpad1.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas')
+        // 注意这里设置宽高的时候没有带 style
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
+        const ctx = canvas.getContext('2d');
+
+        var onoff = false;
+
+
+        canvas.onmousedown = () => {
+            onoff = true;
+        }
+        canvas.onmousemove = (e) => {
+            if (onoff) {
+                ctx.fillStyle = 'green';
+                ctx.fillRect(e.clientX, e.clientY, 10, 10);
+            }
+        }
+        canvas.onmouseup = () => {
+            onoff = false;
+        }
+    </script>
+</body>
+
+</html>
